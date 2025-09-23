@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(find . -type d ! -path . ! -path ./.. -printf 1 | wc -c)
+find . -type d ! -path '.' ! -path './..' | wc -l
