@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script lists files in current directory after first dash
+
+for file in *    # * expands to all non-hidden files
+do
+    # Remove everything up to and including the first dash
+    echo "${file#*-}"
+done
