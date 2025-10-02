@@ -11,9 +11,9 @@ cleanup() {
 }
 
 # Trap signals
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'cleanup' SIGQUIT SIGTERM
+trap 'echo "I hate the kill command"' SIGTERM       # SIGTERM prints message
+trap 'echo "Y U no love me?!"' SIGINT             # SIGINT prints message
+trap 'cleanup' SIGQUIT                             # SIGQUIT deletes PID file and exits
 
 # Infinite loop
 while true
