@@ -5,26 +5,21 @@ PID_FILE="/var/run/myscript.pid"
 # Create the PID file
 echo $$ > "$PID_FILE"
 
-# Function to handle SIGTERM
-handle_sigterm() {
-    echo "I hate the kill command"
-}
-
 # Function to handle SIGINT
 handle_sigint() {
     echo "Y U no love me?!"
 }
 
-# Function to handle SIGQUIT or SIGTERM for clean exit
-cleanup() {
+# Function to handle SIGTERM or SIGQUIT
+handle_exit() {
+    echo "I hate the kill command"
     rm -f "$PID_FILE"
     exit 0
 }
 
 # Trap signals
-trap 'handle_sigterm' SIGTERM
 trap 'handle_sigint' SIGINT
-trap 'cleanup' SIGQUIT SIGTERM
+trap 'handle_exit' SIGTERM SIGQUIT
 
 # Infinite loop printing "To infinity and beyond"
 while true; do
